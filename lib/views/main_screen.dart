@@ -58,7 +58,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                           height: 2.h,
                         ),
                         const Text(
-                          'Signup to continue',
+                          'SignUp to continue',
                           textAlign: TextAlign.left,
                         )
                       ],
