@@ -65,6 +65,89 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                     ),
                   ),
                 )),
+            Positioned(
+              top: 230.h,
+              child: Container(
+                padding: EdgeInsets.all(20.h),
+                height: 280.h,
+                width: 1.sw - 40.w,
+                margin: EdgeInsets.symmetric(horizontal: 20.0.h),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(15.r),
+                  boxShadow: [
+                    BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 15,
+                        spreadRadius: 5),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isSignupScreen = false;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                'LOGIN',
+                                style: TextStyle(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: isSignupScreen
+                                        ? Palette.textColor1
+                                        : Palette.activeColor),
+                              ),
+                              if (!isSignupScreen)
+                                Container(
+                                  margin: EdgeInsets.only(top: 3.h),
+                                  height: 2.h,
+                                  width: 55.w,
+                                  color: Colors.orange,
+                                ),
+                            ],
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              // 회원가입 을 누르면 값이 true로 변경
+                              isSignupScreen = true;
+                            });
+                          },
+                          child: Column(
+                            children: [
+                              Text(
+                                'SIGNUP',
+                                style: TextStyle(
+                                    fontSize: 16.sp,
+                                    fontWeight: FontWeight.bold,
+                                    color: isSignupScreen
+                                        ? Palette.activeColor
+                                        : Palette.textColor1),
+                              ),
+                              if (isSignupScreen)
+                                Container(
+                                  margin: EdgeInsets.only(top: 3.h),
+                                  height: 2.h,
+                                  width: 55.w,
+                                  color: Colors.orange,
+                                ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
