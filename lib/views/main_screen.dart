@@ -19,7 +19,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
         backgroundColor: Palette.backgroundColor,
         body: Stack(
           children: [
-            // const Text('data'),
+            // 배경
             Positioned(
                 top: 0,
                 left: 0,
@@ -65,6 +65,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                     ),
                   ),
                 )),
+            // 텍스트 폼 필드
             Positioned(
               top: 230.h,
               child: Container(
@@ -144,10 +145,161 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                         )
                       ],
                     ),
+                    Container(
+                      margin: EdgeInsets.only(top: 40.h),
+                      child: Form(
+                          child: Column(
+                        children: [
+                          TextField(
+                            decoration: InputDecoration(
+                                prefixIcon: const Icon(
+                                  Icons.account_circle,
+                                ),
+                                // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35.r),
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35.r),
+                                  ),
+                                ),
+                                hintText: 'User name',
+                                hintStyle: TextStyle(
+                                    fontSize: 14.sp, color: Palette.textColor1),
+                                contentPadding: const EdgeInsets.all(10)),
+                          ),
+                          SizedBox(
+                            height: 8.h,
+                          ),
+                          TextField(
+                            decoration: InputDecoration(
+                                prefixIcon: const Icon(
+                                  Icons.account_circle,
+                                ),
+                                // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35.r),
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35.r),
+                                  ),
+                                ),
+                                hintText: 'User name',
+                                hintStyle: TextStyle(
+                                    fontSize: 14.sp, color: Palette.textColor1),
+                                contentPadding: const EdgeInsets.all(10)),
+                          ),
+                          SizedBox(
+                            height: 8.h,
+                          ),
+                          TextField(
+                            decoration: InputDecoration(
+                                prefixIcon: const Icon(
+                                  Icons.account_circle,
+                                ),
+                                // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35.r),
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(
+                                      color: Palette.textColor1),
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(35.r),
+                                  ),
+                                ),
+                                hintText: 'User name',
+                                hintStyle: TextStyle(
+                                    fontSize: 14.sp, color: Palette.textColor1),
+                                contentPadding: const EdgeInsets.all(10)),
+                          )
+                        ],
+                      )),
+                    )
                   ],
                 ),
               ),
-            )
+            ),
+            // 동그란 원모양 버튼 ->
+            Positioned(
+              top: 460.h,
+              // right: 10,
+              left: 180.w,
+              child: Container(
+                height: 90.h,
+                width: 90.h,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50)),
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.3),
+                          spreadRadius: 1,
+                          blurRadius: 1,
+                          offset: const Offset(0, 2),
+                        )
+                      ],
+                      borderRadius: BorderRadius.circular(30),
+                      gradient: const LinearGradient(
+                          // 컬러의 방향 지정
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [Colors.pink, Colors.white]),
+                    ),
+                    child: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      size: 40.sp,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            //
+            Positioned(
+              top: 1.sh - 230.h,
+              left: 140,
+              child: Column(
+                children: [
+                  const Text('or SignUp with'),
+                  SizedBox(
+                    height: 15.h,
+                  ),
+                  TextButton.icon(
+                      onPressed: () {},
+                      style: TextButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          backgroundColor: Palette.googleColor,
+                          foregroundColor: Colors.white,
+                          minimumSize: Size(155.w, 40.h)),
+                      icon: const Icon(Icons.add),
+                      label: const Text('Google')),
+                ],
+              ),
+            ),
           ],
         ),
       ),
