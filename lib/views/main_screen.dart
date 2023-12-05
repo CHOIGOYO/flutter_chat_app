@@ -68,11 +68,12 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                   ),
                 )),
             // 텍스트 폼 필드
-            Positioned(
+            AnimatedPositioned(
               top: 230.h,
-              child: Container(
+              duration: const Duration(milliseconds: 500),
+              child: AnimatedContainer(
                 padding: EdgeInsets.all(20.h),
-                height: isSignupScreen ? 280.h : 220.h,
+                height: isSignupScreen ? 280.h : 260.h,
                 width: 1.sw - 40.w,
                 margin: EdgeInsets.symmetric(horizontal: 20.0.h),
                 decoration: BoxDecoration(
@@ -85,6 +86,8 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                         spreadRadius: 5),
                   ],
                 ),
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeIn,
                 child: Column(
                   children: [
                     Row(
@@ -148,71 +151,15 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                       ],
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 30.h),
+                      margin:
+                          EdgeInsets.only(top: isSignupScreen ? 30.h : 50.h),
                       child: Form(
-                          child: Column(
-                        children: [
-                          TextField(
-                            decoration: InputDecoration(
-                                prefixIcon: const Icon(
-                                  Icons.email,
-                                ),
-                                // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Palette.textColor1),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(35.r),
-                                  ),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Palette.textColor1),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(35.r),
-                                  ),
-                                ),
-                                hintText: 'Email',
-                                hintStyle: TextStyle(
-                                    fontSize: 14.sp, color: Palette.textColor1),
-                                contentPadding: const EdgeInsets.all(10)),
-                          ),
-                          SizedBox(
-                            height: 8.h,
-                          ),
-                          TextField(
-                            decoration: InputDecoration(
-                                prefixIcon: const Icon(
-                                  Icons.lock,
-                                ),
-                                // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Palette.textColor1),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(35.r),
-                                  ),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Palette.textColor1),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(35.r),
-                                  ),
-                                ),
-                                hintText: 'Password',
-                                hintStyle: TextStyle(
-                                    fontSize: 14.sp, color: Palette.textColor1),
-                                contentPadding: const EdgeInsets.all(10)),
-                          ),
-                          SizedBox(
-                            height: 8.h,
-                          ),
-                          if (isSignupScreen)
+                        child: Column(
+                          children: [
                             TextField(
                               decoration: InputDecoration(
                                   prefixIcon: const Icon(
-                                    Icons.account_circle,
+                                    Icons.email,
                                   ),
                                   // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
                                   focusedBorder: OutlineInputBorder(
@@ -229,24 +176,86 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                                       Radius.circular(35.r),
                                     ),
                                   ),
-                                  hintText: 'User name',
+                                  hintText: 'Email',
                                   hintStyle: TextStyle(
                                       fontSize: 14.sp,
                                       color: Palette.textColor1),
                                   contentPadding: const EdgeInsets.all(10)),
-                            )
-                        ],
-                      )),
+                            ),
+                            SizedBox(
+                              height: 8.h,
+                            ),
+                            TextField(
+                              decoration: InputDecoration(
+                                  prefixIcon: const Icon(
+                                    Icons.lock,
+                                  ),
+                                  // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: Palette.textColor1),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(35.r),
+                                    ),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: Palette.textColor1),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(35.r),
+                                    ),
+                                  ),
+                                  hintText: 'Password',
+                                  hintStyle: TextStyle(
+                                      fontSize: 14.sp,
+                                      color: Palette.textColor1),
+                                  contentPadding: const EdgeInsets.all(10)),
+                            ),
+                            SizedBox(
+                              height: 8.h,
+                            ),
+                            if (isSignupScreen)
+                              TextField(
+                                decoration: InputDecoration(
+                                    prefixIcon: const Icon(
+                                      Icons.account_circle,
+                                    ),
+                                    // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                          color: Palette.textColor1),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(35.r),
+                                      ),
+                                    ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                          color: Palette.textColor1),
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(35.r),
+                                      ),
+                                    ),
+                                    hintText: 'User name',
+                                    hintStyle: TextStyle(
+                                        fontSize: 14.sp,
+                                        color: Palette.textColor1),
+                                    contentPadding: const EdgeInsets.all(10)),
+                              )
+                          ],
+                        ),
+                      ),
                     )
                   ],
                 ),
               ),
             ),
             // 동그란 원모양 버튼 ->
-            Positioned(
-              top: isSignupScreen ? 460.h : 410.h,
+            AnimatedPositioned(
+              top: isSignupScreen ? 460.h : 440.h,
               // right: 10,
               left: 180.w,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeIn,
               child: Container(
                 height: 90.h,
                 width: 90.h,
@@ -284,10 +293,11 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                 ),
               ),
             ),
-            //
-            Positioned(
-              top: isSignupScreen ? 1.sh - 230.h : 1.sh - 260.h,
+            // 버튼 하단 글씨 및 구글 버튼
+            AnimatedPositioned(
+              top: isSignupScreen ? 1.sh - 230.h : 1.sh - 250.h,
               left: 140,
+              duration: const Duration(milliseconds: 500),
               child: Column(
                 children: [
                   const Text('or SignUp with'),
