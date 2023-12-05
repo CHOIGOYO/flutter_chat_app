@@ -25,40 +25,42 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                 left: 0,
                 right: 0,
                 child: Container(
-                  height: 300,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/img.gif'),
-                          fit: BoxFit.fill)),
+                  height: 300.h,
+                  decoration: const BoxDecoration(color: Colors.orange),
                   child: Center(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         RichText(
                           text: TextSpan(
                               text: 'Welcome',
                               style: TextStyle(
-                                  letterSpacing: 1.0,
-                                  fontSize: 20.sp,
-                                  fontWeight: FontWeight.w400,
-                                  color:
-                                      const Color.fromARGB(255, 255, 255, 255)),
+                                letterSpacing: 1.0,
+                                fontSize: 25.sp,
+                                fontWeight: FontWeight.w700,
+                                color: const Color.fromARGB(255, 255, 255, 255),
+                              ),
                               children: [
                                 TextSpan(
-                                    text: ' my app',
-                                    style: TextStyle(
-                                        letterSpacing: 1.0,
-                                        fontSize: 25.sp,
-                                        fontWeight: FontWeight.w700,
-                                        color: const Color.fromARGB(
-                                            255, 255, 255, 255))),
+                                  text: isSignupScreen ? ' my app' : ' back',
+                                  style: TextStyle(
+                                    letterSpacing: 1.0,
+                                    fontSize: 25.sp,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color.fromARGB(
+                                        255, 255, 255, 255),
+                                  ),
+                                ),
                               ]),
                         ),
                         SizedBox(
                           height: 2.h,
                         ),
-                        const Text(
-                          'SignUp to continue',
+                        Text(
+                          isSignupScreen
+                              ? 'SignUp to continue'
+                              : 'SignIn to continue',
                           textAlign: TextAlign.left,
                         )
                       ],
@@ -70,7 +72,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
               top: 230.h,
               child: Container(
                 padding: EdgeInsets.all(20.h),
-                height: 280.h,
+                height: isSignupScreen ? 280.h : 220.h,
                 width: 1.sw - 40.w,
                 margin: EdgeInsets.symmetric(horizontal: 20.0.h),
                 decoration: BoxDecoration(
@@ -146,14 +148,14 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                       ],
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 40.h),
+                      margin: EdgeInsets.only(top: 30.h),
                       child: Form(
                           child: Column(
                         children: [
                           TextField(
                             decoration: InputDecoration(
                                 prefixIcon: const Icon(
-                                  Icons.account_circle,
+                                  Icons.email,
                                 ),
                                 // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
                                 focusedBorder: OutlineInputBorder(
@@ -170,7 +172,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                                     Radius.circular(35.r),
                                   ),
                                 ),
-                                hintText: 'User name',
+                                hintText: 'Email',
                                 hintStyle: TextStyle(
                                     fontSize: 14.sp, color: Palette.textColor1),
                                 contentPadding: const EdgeInsets.all(10)),
@@ -181,7 +183,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                           TextField(
                             decoration: InputDecoration(
                                 prefixIcon: const Icon(
-                                  Icons.account_circle,
+                                  Icons.lock,
                                 ),
                                 // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
                                 focusedBorder: OutlineInputBorder(
@@ -198,7 +200,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                                     Radius.circular(35.r),
                                   ),
                                 ),
-                                hintText: 'User name',
+                                hintText: 'Password',
                                 hintStyle: TextStyle(
                                     fontSize: 14.sp, color: Palette.textColor1),
                                 contentPadding: const EdgeInsets.all(10)),
@@ -206,31 +208,33 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                           SizedBox(
                             height: 8.h,
                           ),
-                          TextField(
-                            decoration: InputDecoration(
-                                prefixIcon: const Icon(
-                                  Icons.account_circle,
-                                ),
-                                // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Palette.textColor1),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(35.r),
+                          if (isSignupScreen)
+                            TextField(
+                              decoration: InputDecoration(
+                                  prefixIcon: const Icon(
+                                    Icons.account_circle,
                                   ),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                      color: Palette.textColor1),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(35.r),
+                                  // focusedBorder  포커스가 들어가도 아웃라인을 설정한 대로 유지하기위해
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: Palette.textColor1),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(35.r),
+                                    ),
                                   ),
-                                ),
-                                hintText: 'User name',
-                                hintStyle: TextStyle(
-                                    fontSize: 14.sp, color: Palette.textColor1),
-                                contentPadding: const EdgeInsets.all(10)),
-                          )
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                        color: Palette.textColor1),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(35.r),
+                                    ),
+                                  ),
+                                  hintText: 'User name',
+                                  hintStyle: TextStyle(
+                                      fontSize: 14.sp,
+                                      color: Palette.textColor1),
+                                  contentPadding: const EdgeInsets.all(10)),
+                            )
                         ],
                       )),
                     )
@@ -240,7 +244,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
             ),
             // 동그란 원모양 버튼 ->
             Positioned(
-              top: 460.h,
+              top: isSignupScreen ? 460.h : 410.h,
               // right: 10,
               left: 180.w,
               child: Container(
@@ -266,7 +270,10 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
                           // 컬러의 방향 지정
                           begin: Alignment.topLeft,
                           end: Alignment.bottomRight,
-                          colors: [Colors.pink, Colors.white]),
+                          colors: [
+                            Color.fromARGB(255, 239, 107, 18),
+                            Colors.white
+                          ]),
                     ),
                     child: Icon(
                       Icons.arrow_forward,
@@ -279,7 +286,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
             ),
             //
             Positioned(
-              top: 1.sh - 230.h,
+              top: isSignupScreen ? 1.sh - 230.h : 1.sh - 260.h,
               left: 140,
               child: Column(
                 children: [
