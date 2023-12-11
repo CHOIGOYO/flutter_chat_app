@@ -8,6 +8,9 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+//   await const Firebase.initializeApp(
+//     options = DefaultFirebaseOptions.currentPlatform, {super.key},
+// );
 
   @override
   Widget build(BuildContext context) {
