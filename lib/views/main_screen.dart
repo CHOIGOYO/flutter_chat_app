@@ -17,7 +17,7 @@ class _LoginSignUpScreenState extends State<LoginSignUpScreen> {
   String userEmail = '';
   String userPassword = '';
 
-  void _tryValidation() {
+  void _tryValidation() async {
     final isValid = _formKey.currentState!.validate();
     if (isValid) {
       _formKey.currentState!.save(); // onSaved 메서드 동작하게 됨
